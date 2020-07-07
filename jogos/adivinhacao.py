@@ -2,7 +2,7 @@ print("*******************************************")
 print("Bem vindo ao jogo de adivinhação")
 print("*******************************************")
 
-numero_secreto = 45
+numero_secreto = 47
 
 numero_digitado = int(input("Digite um numero:"))
 
