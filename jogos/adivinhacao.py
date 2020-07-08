@@ -2,14 +2,30 @@ print("*******************************************")
 print("Bem vindo ao jogo de adivinhação")
 print("*******************************************")
 
-numero_secreto = 47
+tentativas = 3
+rodada = 1
 
-numero_digitado = int(input("Digite um numero:"))
+while (rodada <= tentativas):
+    numero_secreto = 47
+    print("Rodada {} de {}".format(rodada, tentativas))
+    numero_digitado = int(input("Digite um numero:"))
 
-if numero_secreto == numero_digitado:
-    print("Você acertou!")
+    acertou = numero_digitado == numero_secreto
 
-else:
-    print("Você errou!")
+    maior = numero_digitado > numero_secreto
+
+    menor = numero_digitado < numero_secreto
+
+    if (acertou):
+        print("Você acertou!")
+        rodada = 4
+
+    else:
+        if (maior):
+            print("O numero secreto é menor!")
+        elif(menor):
+            print("O numero secreto é maior")
+
+    rodada = rodada + 1
 
 print("Fim do Jogo")
