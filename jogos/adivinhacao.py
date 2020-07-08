@@ -29,3 +29,5 @@ while (rodada <= tentativas):
     rodada = rodada + 1
 
 print("Fim do Jogo")
+
+print()
