@@ -1,31 +1,55 @@
-print("*******************************************")
-print("Bem vindo ao jogo de adivinhação")
-print("*******************************************")
+import random
 
-tentativas = 3
-rodada = 1
+def jogar():
 
-while (rodada <= tentativas):
-    numero_secreto = 47
-    print("Rodada {} de {}".format(rodada, tentativas))
-    numero_digitado = int(input("Digite um numero:"))
+    print("*******************************************")
+    print("Bem vindo ao jogo de adivinhação")
+    print("*******************************************")
 
-    acertou = numero_digitado == numero_secreto
+    numero_secreto = random.randrange(1, 101)
+    tentativas = 0
+    pontuacao = 1000
+    rodada = 1
 
-    maior = numero_digitado > numero_secreto
+    print("Defina o nivel do jogo")
+    print("(1) Facíl (2) Médio (3) Difícil")
 
-    menor = numero_digitado < numero_secreto
+    nivel = input("Digite o nivel desejado:")
 
-    if (acertou):
-        print("Você acertou!")
-        rodada = 4
-
+    if (nivel == 1):
+        tentativas = 20
+    elif (nivel == 2):
+        tentativas = 10
     else:
-        if (maior):
-            print("O numero secreto é menor!")
-        elif(menor):
-            print("O numero secreto é maior")
+        tentativas = 5
 
-    rodada = rodada + 1
+    for rodada in range(1, tentativas + 1):
+        print(numero_secreto)
 
-print("Fim do Jogo")
+        print("Rodada {} de {}".format(rodada, tentativas))
+        numero_digitado = int(input("Digite um numero:"))
+
+        if (numero_digitado < 1 or numero_digitado > 100):
+            print("O numero secreto esta entre 1 e 100")
+            continue
+
+        acertou = numero_digitado == numero_secreto
+        maior = numero_digitado > numero_secreto
+        menor = numero_digitado < numero_secreto
+
+        if (acertou):
+            print("Você acertou!")
+            print("Sua pontuação foi {}".format(pontuacao))
+            break
+
+        else:
+            if (maior):
+                print("O numero secreto é menor!")
+            elif (menor):
+                print("O numero secreto é maior")
+        pontuacao = pontuacao - abs(numero_secreto - numero_digitado)
+
+    print("Fim do Jogo")
+
+if(__name__ == "__main__"):
+    jogar()
